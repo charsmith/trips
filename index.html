@@ -21,7 +21,7 @@
   --card-bg: #FDFAF5;
   --shadow: rgba(44,31,20,0.12);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
 body {
   background: var(--cream);
@@ -124,6 +124,7 @@ body {
 .cover-day-pill:hover {
   background: rgba(196,137,74,0.2);
   border-color: rgba(196,137,74,0.7);
+  -webkit-tap-highlight-color: transparent;
 }
 .cover-day-pill:focus,
 .cover-day-pill:active {
