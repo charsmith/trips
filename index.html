@@ -264,7 +264,7 @@ body {
 }
 
 /* ─── SECTION TITLE ─── */
-.section-title {
+.section-heading,.section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 13px;
   letter-spacing: 4px;
@@ -275,13 +275,13 @@ body {
   gap: 12px;
   margin: 36px 0 18px;
 }
-.section-title::after {
+.section-heading,.section-title::after {
   content: '';
   flex: 1;
   height: 1px;
   background: var(--sand);
 }
-.section-title .icon { font-size: 14px; }
+.section-heading,.section-title .icon { font-size: 14px; }
 
 /* ─── SCHEDULE / TIMELINE ─── */
 .timeline { padding-left: 0; }
@@ -338,62 +338,64 @@ body {
   line-height: 1.5;
 }
 
-/* ─── RESTAURANTS ─── */
-.restaurants-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-}
-.rest-card {
-  background: var(--card-bg);
-  border: 1px solid var(--sand);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.rest-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow);
-}
-.rest-photo {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-}
-.rest-photo-placeholder {
-  width: 100%;
-  height: 100px;
-  background: var(--sand);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-.rest-body { padding: 12px 14px 14px; }
-.rest-neighborhood {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 3px;
-}
-.rest-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 16px;
-  color: var(--dark-brown);
-  margin-bottom: 3px;
-}
-.rest-rating {
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-.rest-note {
-  font-size: 11.5px;
-  color: var(--muted);
-  line-height: 1.5;
-}
+ /* restaurant cards */
+    .restaurants {
+      margin-top: 1.5rem;
+    }
+    .restaurants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem;
+      margin-top: .75rem;
+    }
+    .rest-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .rest-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,.1);
+    }
+    .rest-photo {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+    }
+    .rest-body {
+      padding: .6rem .75rem .7rem;
+    }
+    .rest-neighborhood {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+    .rest-name {
+      font-weight: 700;
+      font-size: .9rem;
+      margin: .1rem 0 .2rem;
+    }
+    .rest-meta {
+      font-size: .75rem;
+      color: #777;
+    }
+    .rest-desc {
+      font-size: .75rem;
+      color: #555;
+      margin-top: .2rem;
+    }
+    .rest-hours {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: .25rem;
+    }
 
 /* ─── TIP BOX ─── */
 .tip-box {
@@ -517,6 +519,104 @@ body {
   color: rgba(253,250,245,0.8);
   line-height: 1.5;
 }
+    /* ── Named location links ── */
+    .loc-link {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: #aaa;
+      text-underline-offset: 3px;
+      color: inherit;
+      cursor: pointer;
+      transition: text-decoration-color .15s;
+    }
+    .loc-link:hover {
+      text-decoration-color: var(--ink);
+    }
+
+  /* ── Pizza spotlight ── */
+    .pizza-spotlight {
+      margin-top: 1.25rem;
+      background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+      border: 1.5px solid #f5c6c6;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .pizza-spotlight-heading {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--pizza);
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .pizza-spotlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .pizza-spots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+      margin-top: .6rem;
+    }
+    @media (max-width: 480px) { .pizza-spots { grid-template-columns: 1fr; } }
+    .pizza-spot {
+      background: white;
+      border-radius: 7px;
+      padding: .65rem .8rem;
+      border: 1px solid #f5c6c6;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: box-shadow .2s;
+    }
+    .pizza-spot:hover { box-shadow: 0 4px 14px rgba(192,57,43,.12); }
+    .pizza-spot-name { font-weight: 700; font-size: .9rem; margin-bottom: .15rem; }
+    .pizza-spot-note { font-size: .78rem; color: #666; }
+
+    /* ── Coffee treat ── */
+    .coffee-treat {
+      margin-top: 1.25rem;
+      background: linear-gradient(135deg, #fdf6ee 0%, #faf4ec 100%);
+      border: 1.5px solid #d9b88a;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .coffee-treat-heading {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--coffee);
+      font-weight: 700;
+      margin-bottom: .35rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .coffee-treat-heading::before { content: '☕'; font-size: .8rem; }
+    .coffee-treat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .coffee-treat-note {
+      font-size: .82rem;
+      color: #5a3e28;
+      line-height: 1.5;
+    }
+    .coffee-spot-link {
+      display: inline-block;
+      margin-top: .5rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--coffee);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
 </style>
 </head>
 <body>
@@ -526,7 +626,7 @@ body {
   <div class="cover-bg"></div>
   <div class="cover-overlay"></div>
   <div class="cover-content">
-    <div class="cover-eyebrow">Family Travel · Spring 2025</div>
+    <div class="cover-eyebrow">Family Travel · Spring 2026</div>
     <div class="cover-city">NEW YORK</div>
     <div class="cover-script">the city that never sleeps</div>
     <div class="cover-dates">March 28 — April 4 · 8 Days</div>
@@ -594,15 +694,15 @@ body {
       <div class="tl-time">8:30 AM</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
       <div class="tl-content">
-        <div class="tl-place">Statue of Liberty</div>
-        <div class="tl-note">Security check-in at Statue City Cruises · Iconic 1886 copper statue gifted by France · Symbol of American freedom</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Statue+of+Liberty,+New+York" target="_blank" class="loc-link">Statue of Liberty</a></div>
+        <div class="tl-note">Security check-in at <a href="https://maps.google.com/?q=Statue+City+Cruises,+New+York" target="_blank" class="loc-link">Statue City Cruises</a> · Iconic 1886 copper statue gifted by France · Symbol of American freedom</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">After ferry</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
       <div class="tl-content">
-        <div class="tl-place">Ellis Island</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Ellis+Island,+New+York" target="_blank" class="loc-link">Ellis Island</a></div>
         <div class="tl-note">Included with ferry ticket · Historic immigrant processing station 1892–1954 · Powerful museum tracing 12 million arrivals</div>
       </div>
     </div>
@@ -610,72 +710,120 @@ body {
       <div class="tl-time">Afternoon</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
       <div class="tl-content">
-        <div class="tl-place">One World Observatory</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=One+World+Observatory,+New+York" target="_blank" class="loc-link">One World Observatory</a></div>
         <div class="tl-note">Tallest building in the Western Hemisphere at 1,776 ft · 102nd floor with 360° views of the city</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">Afternoon</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
       <div class="tl-content">
-        <div class="tl-place">Federal Hall National Memorial</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Federal+Hall,+26+Wall+St,+New+York" target="_blank" class="loc-link">Federal Hall National Memorial</a></div>
         <div class="tl-note">26 Wall St · Where George Washington took his first presidential oath in 1789 · Free entry</div>
       </div>
     </div>
   </div>
+
+
+  <!-- Coffee treat Day 1 -->
+  <div class="coffee-treat">
+    <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+    <div class="coffee-treat-title">Coffee Project — Financial District</div>
+    <div class="coffee-treat-note">
+      Perfect pre-ferry stop! <a href="https://maps.google.com/?q=Coffee+Project+NYC+Financial+District" target="_blank" class="coffee-spot-link">Coffee Project Financial</a> is steps from the Statue City Cruises terminal — same award-winning quality as the East Village flagship. Famous for their deconstructed latte. A small treat to kick off the trip right. ☕
+    </div>
+  </div>
+  <!-- Pizza spotlight Day 4 — Tuesday evening free -->
+  <div class="pizza-spotlight">
+    <div class="pizza-spotlight-heading">🍕 Boys' Pizza Mission</div>
+    <div class="pizza-spotlight-title">West Village Pizza Night — Saturday Evening</div>
+    <p style="font-size:.83rem;color:#555;margin-bottom:.5rem;">Saturday evening is wide open — the perfect time to head down to the West Village and let the boys try two of NYC's most iconic slices. Both are in the same neighborhood, easy walk between them.</p>
+    <div class="pizza-spots">
+      <a href="https://maps.google.com/?q=L%27Industrie+Pizzeria+West+Village+New+York" target="_blank" class="pizza-spot">
+        <div class="pizza-spot-name">L'Industrie Pizzeria</div>
+        <div class="pizza-spot-note">West Village · Beloved Neapolitan-style NY slice, consistently rated best in city · expect a short line but worth it</div>
+      </a>
+      <a href="https://maps.google.com/?q=Joe%27s+Pizza+West+Village+New+York" target="_blank" class="pizza-spot">
+        <div class="pizza-spot-name">Joe's Pizza</div>
+        <div class="pizza-spot-note">West Village · NYC institution since 1975 · the definitive NY fold-and-eat slice · cheap, perfect, legendary</div>
+      </a>
+    </div>
+  </div>
+
 
   <div class="section-title"><span class="icon">🚇</span>Getting There</div>
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">7:30 AM</div>
       <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=Kimpton+Eventi+Hotel,+851+Avenue+of+the+Americas,+New+York"
+            target="_blank" class="loc-link">Kimpton Eventi Hotel</a></div>
+        <div class="tl-note">Depart hotel</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">7:35 AM</div>
       <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">28th St &amp; Broadway → R/W Train</div><div class="tl-note">Southbound toward Rector St · ~20 min ride</div></div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=28th+St+%26+Broadway+Subway,+New+York" target="_blank"
+            class="loc-link">28th St &amp; Broadway → R/W Train</a></div>
+        <div class="tl-note">Southbound toward Rector St · ~20 min ride</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:00 AM</div>
       <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Liberty Bagels Wall Street</div><div class="tl-note">Grab breakfast bagels before the ferry</div></div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=Liberty+Bagels+Wall+Street,+New+York" target="_blank"
+            class="loc-link">Liberty Bagels Wall Street</a></div>
+        <div class="tl-note">Grab breakfast bagels before the ferry</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:20 AM</div>
       <div class="tl-line"><div class="tl-dot travel"></div></div>
-      <div class="tl-content"><div class="tl-place">Statue City Cruises Terminal</div><div class="tl-note">Walk to terminal · Check in by 8:30 AM</div></div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=Statue+City+Cruises+Terminal,+New+York" target="_blank"
+            class="loc-link">Statue City Cruises Terminal</a></div>
+        <div class="tl-note">Walk to terminal · Check in by 8:30 AM</div>
+      </div>
     </div>
   </div>
 
-  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
-  <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop" alt="diner food" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Lower Manhattan</div>
-        <div class="rest-name">ZAZA</div>
-        <div class="rest-rating">⭐ 4.5 · $$</div>
-        <div class="rest-note">Classic diner, milkshakes, huge portions · 7am–3pm only</div>
-      </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="pancakes brunch" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Tribeca</div>
-        <div class="rest-name">Bubby's</div>
-        <div class="rest-rating">⭐ 4.4 · $$</div>
-        <div class="rest-note">Pancakes, mac &amp; cheese, comfort food all day · 8am–10pm</div>
-      </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Tribeca</div>
-        <div class="rest-name">Serafina Tribeca</div>
-        <div class="rest-rating">⭐ 4.4 · $$</div>
-        <div class="rest-note">Easy Italian pizza, relaxed and family-friendly · noon–10pm</div>
-      </div>
+  <div class="restaurants">
+    <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+    <div class="restaurants-grid">
+      <a href="https://maps.google.com/?q=ZAZA+diner+Lower+Manhattan+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop" alt="diner food" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Lower Manhattan</div>
+          <div class="rest-name">ZAZA <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.5 · $$</div>
+          <div class="rest-desc">Classic diner, milkshakes, huge portions</div>
+          <div class="rest-hours">7am–3pm only</div>
+        </div>
+      </a>
+      <a href="https://maps.google.com/?q=Bubby%27s+Tribeca+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="pancakes brunch" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Tribeca</div>
+          <div class="rest-name">Bubby's <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.4 · $$</div>
+          <div class="rest-desc">Pancakes, mac &amp; cheese, comfort food all day</div>
+          <div class="rest-hours">8am–10pm</div>
+        </div>
+      </a>
+      <a href="https://maps.google.com/?q=Serafina+Tribeca+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Tribeca</div>
+          <div class="rest-name">Serafina Tribeca <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.4 · $$</div>
+          <div class="rest-desc">Easy Italian pizza, relaxed and family-friendly</div>
+          <div class="rest-hours">noon–10pm</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -713,92 +861,137 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">9:45 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Redeemer Downtown</div>
-        <div class="tl-note">120 W 14th St · 10am classical service with children's ministry · Tim Keller's founding church</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Redeemer+Downtown,+120+W+14th+St,+New+York"
+            target="_blank" class="loc-link">Redeemer Downtown</a></div>
+        <div class="tl-note">120 W 14th St · 10am classical service with children's ministry · Tim Keller's founding
+          church</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">11:45 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">The High Line</div>
-        <div class="tl-note">7-min walk from church · Enter at Gansevoort St, walk north through Chelsea · Elevated railway turned urban park</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=The+High+Line,+New+York" target="_blank"
+            class="loc-link">The High Line</a></div>
+        <div class="tl-note">7-min walk from church · Enter at <a
+            href="https://maps.google.com/?q=High+Line+Gansevoort+St+entrance+New+York" target="_blank"
+            class="loc-link">Gansevoort St</a>, walk north through Chelsea · Elevated railway turned urban park</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">1:00 PM</div>
-      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Chelsea Market</div>
-        <div class="tl-note">75 9th Ave · High Line passes directly above · Los Tacos No. 1 highly recommended inside</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Chelsea+Market,+75+9th+Ave,+New+York" target="_blank"
+            class="loc-link">Chelsea Market</a></div>
+        <div class="tl-note">75 9th Ave · High Line passes directly above · <a
+            href="https://maps.google.com/?q=Los+Tacos+No.+1+Chelsea+Market+New+York" target="_blank" class="loc-link">Los
+            Tacos No. 1</a> highly recommended inside</div>
       </div>
     </div>
   </div>
+
+  <div class="coffee-treat">
+  <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+  <div class="coffee-treat-title">Yanni's Coffee — Chelsea</div>
+  <div class="coffee-treat-note">
+    A cozy neighborhood gem! After church, <a href="https://maps.google.com/?q=Yanni%27s+Coffee+96+7th+Ave+New+York" target="_blank" class="coffee-spot-link">Yanni's Coffee</a> is a warm, dog-friendly café on 7th Ave — beloved for seriously good espresso drinks and what many call the best chocolate chip cookies in NYC. A sweet little stop worth the detour. ☕
+  </div>
+</div>
 
   <div class="section-title"><span class="icon">🚇</span>Getting There</div>
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">8:00 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place"><a
+            href="https://maps.google.com/?q=Kimpton+Eventi+Hotel,+851+Avenue+of+the+Americas,+New+York" target="_blank"
+            class="loc-link">Kimpton Eventi Hotel</a></div>
+        <div class="tl-note">Depart hotel</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:05 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">The Grey Dog – Flatiron</div><div class="tl-note">Breakfast · 55 W 26th St · 3 blocks from hotel · Allow ~1 hour</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=The+Grey+Dog+Flatiron,+55+W+26th+St,+New+York"
+            target="_blank" class="loc-link">The Grey Dog – Flatiron</a></div>
+        <div class="tl-note">Breakfast · 55 W 26th St · 3 blocks from hotel · Allow ~1 hour</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">9:15 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Walk to Redeemer</div><div class="tl-note">~10 min south on 8th Ave</div></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-time">9:45 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div></div>
-      <div class="tl-content"><div class="tl-place">Arrive Redeemer Downtown</div><div class="tl-note">Arrive early — Sunday service fills up fast</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place">Walk to Redeemer</div>
+        <div class="tl-note">~10 min south on 8th Ave</div>
+      </div>
     </div>
   </div>
 
   <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
   <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" loading="lazy">
+    <a href="https://maps.google.com/?q=7th+Street+Burger+West+Village+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" />
       <div class="rest-body">
         <div class="rest-neighborhood">West Village</div>
-        <div class="rest-name">7th Street Burger</div>
-        <div class="rest-rating">⭐ 4.7 · $</div>
-        <div class="rest-note">Counter smash burgers ~$7 · multiple reviewers call it NYC's best</div>
+        <div class="rest-name">7th Street Burger <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.7 · $</div>
+        <div class="rest-desc">Counter smash burgers ~$7 · multiple reviewers call it NYC's best</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=John%27s+of+Bleecker+St+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" />
       <div class="rest-body">
         <div class="rest-neighborhood">West Village</div>
-        <div class="rest-name">John's of Bleecker St</div>
-        <div class="rest-rating">⭐ 4.6 · $$</div>
-        <div class="rest-note">Legendary coal-fired pizza since 1929 · Walk-in only · Whole pies</div>
+        <div class="rest-name">John's of Bleecker St <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.6 · $$</div>
+        <div class="rest-desc">Legendary coal-fired pizza since 1929 · Walk-in only · Whole pies</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Yasubee+Ramen+Chelsea+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen" />
       <div class="rest-body">
         <div class="rest-neighborhood">Chelsea</div>
-        <div class="rest-name">Yasubee Ramen</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Outstanding ramen + gyoza + karaage wings · 11am–10pm</div>
+        <div class="rest-name">Yasubee Ramen <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Outstanding ramen + gyoza + karaage wings</div>
+        <div class="rest-hours">11am–10pm</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop" alt="restaurant food" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Mercado+Little+Spain+Hudson+Yards+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop"
+        alt="restaurant food" />
       <div class="rest-body">
         <div class="rest-neighborhood">Hudson Yards</div>
-        <div class="rest-name">Mercado Little Spain</div>
-        <div class="rest-rating">⭐ 4.4 · $$</div>
-        <div class="rest-note">José Andrés' Spanish food hall · No reservations · Everyone picks their own counter</div>
+        <div class="rest-name">Mercado Little Spain <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.4 · $$</div>
+        <div class="rest-desc">José Andrés' Spanish food hall · No reservations · Everyone picks their own counter</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -836,76 +1029,111 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">Morning</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Central Park</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Central+Park,+New+York" target="_blank"
+            class="loc-link">Central Park</a></div>
         <div class="tl-note">843 acres of green space in the heart of Manhattan · Enter near 59th St for the Pond area</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">Morning</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Gapstow Bridge</div>
-        <div class="tl-note">Iconic stone arch bridge over the Pond · Famous for its view of the midtown skyline framed by trees · Perfect photo spot</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Gapstow+Bridge+Central+Park+New+York" target="_blank"
+            class="loc-link">Gapstow Bridge</a></div>
+        <div class="tl-note">Iconic stone arch bridge over the Pond · Famous for its view of the midtown skyline framed by
+          trees · Perfect photo spot</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">Morning</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Bethesda Terrace</div>
-        <div class="tl-note">Grand arcade and fountain at the park's heart · Angel of the Waters statue · One of the most beautiful spots in all of NYC</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Bethesda+Terrace+Central+Park+New+York" target="_blank"
+            class="loc-link">Bethesda Terrace</a></div>
+        <div class="tl-note">Grand arcade and fountain at the park's heart · Angel of the Waters statue · One of the most
+          beautiful spots in all of NYC</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">Afternoon</div>
-      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">The Metropolitan Museum of Art</div>
-        <div class="tl-note">1000 Fifth Ave · One of the world's great art museums · Suggest Egyptian Wing, European paintings, and the rooftop garden</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Metropolitan+Museum+of+Art,+1000+Fifth+Ave,+New+York"
+            target="_blank" class="loc-link">The Metropolitan Museum of Art</a></div>
+        <div class="tl-note">1000 Fifth Ave · One of the world's great art museums · Suggest Egyptian Wing, European
+          paintings, and the rooftop garden</div>
       </div>
     </div>
   </div>
 
+  <div class="coffee-treat">
+  <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+  <div class="coffee-treat-title">787 Coffee — Chelsea / Penn Station</div>
+  <div class="coffee-treat-note">
+    A perfect pick-me-up near MSG before heading to Central Park! <a href="https://maps.google.com/?q=787+Coffee+251+W+30th+St+New+York" target="_blank" class="coffee-spot-link">787 Coffee</a> is steps from Penn Station and Madison Square Garden — Puerto Rican specialty coffee with unique horchata and coquito lattes. One of the highest-rated cafés in the area at ⭐ 4.8. ☕
+  </div>
+</div>
+
   <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
   <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+    <a href="https://maps.google.com/?q=Kuu+ramen+Upper+East+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop"
+        alt="ramen noodles" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper East Side</div>
-        <div class="rest-name">Kuu</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Outstanding ramen and sushi · Barely any wait · 11:30am–9:30pm</div>
+        <div class="rest-name">Kuu <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Outstanding ramen and sushi · Barely any wait</div>
+        <div class="rest-hours">11:30am–9:30pm</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Meijin+ramen+Upper+East+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop"
+        alt="ramen noodles" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper East Side</div>
-        <div class="rest-name">Meijin</div>
-        <div class="rest-rating">⭐ 4.7</div>
-        <div class="rest-note">Beloved ramen spot with paper cranes on the ceiling · Super cozy atmosphere</div>
+        <div class="rest-name">Meijin <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.7</div>
+        <div class="rest-desc">Beloved ramen spot with paper cranes on the ceiling · Super cozy atmosphere</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop" alt="restaurant" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Green+Kitchen+Upper+East+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop"
+        alt="restaurant" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper East Side</div>
-        <div class="rest-name">Green Kitchen</div>
-        <div class="rest-rating">⭐ 4.4 · $$</div>
-        <div class="rest-note">All-day casual 8am–10pm · Reviewers rave about it for families</div>
+        <div class="rest-name">Green Kitchen <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.4 · $$</div>
+        <div class="rest-desc">All-day casual · Reviewers rave about it for families</div>
+        <div class="rest-hours">8am–10pm</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Super+Nice+Pizza+Upper+West+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper West Side</div>
-        <div class="rest-name">Super Nice Pizza</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Pizza gem with a secret-menu burger · Brunch Sat/Sun</div>
+        <div class="rest-name">Super Nice Pizza <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Pizza gem with a secret-menu burger · Brunch Sat/Sun</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -943,85 +1171,108 @@ body {
   <div class="section-title"><span class="icon">📍</span>Schedule</div>
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-time">9:45 AM</div>
+    <div class="tl-time">8:45 AM</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">UN Visitor Entrance</div>
-        <div class="tl-note">Arrive at 801 1st Ave at 45th St · Have ID ready for security</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=United+Nations+Visitor+Entrance,+800+1st+Ave,+New+York" target="_blank" class="loc-link">UN Visitor Entrance</a></div>
+      <div class="tl-note">Arrive at 800 1st Ave at 45th St · Have ID ready for security</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-time">10:45 AM</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">9:45 AM</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">United Nations Headquarters</div>
-        <div class="tl-note">Guided tour of the General Assembly and Security Council chambers</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=United+Nations+Headquarters,+New+York" target="_blank" class="loc-link">United Nations Headquarters</a></div>
+      <div class="tl-note">Guided tour of the General Assembly and Security Council chambers</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-time">Noon</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">Noon</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">Chrysler Building</div>
-        <div class="tl-note">405 Lexington Ave · 5-min walk from UN · Free art deco lobby, publicly accessible</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=Chrysler+Building,+404+Lexington+Ave,+New+York" target="_blank" class="loc-link">Chrysler Building</a></div>
+      <div class="tl-note">404 Lexington Ave · 5-min walk from UN · Free art deco lobby, publicly accessible</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-time">12:30 PM</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">12:30 PM</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">Grand Central Terminal</div>
-        <div class="tl-note">Lower-level food market for lunch · Explore the magnificent main hall</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=Grand+Central+Terminal,+New+York" target="_blank" class="loc-link">Grand Central Terminal</a></div>
+      <div class="tl-note">Lower-level food market for lunch · Explore the magnificent main hall</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-time">2:00 PM</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">1:00 PM</div>
       <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">New York Public Library</div>
-        <div class="tl-note">5th Ave &amp; 42nd St · 10-min walk · Free · Rose Main Reading Room is stunning</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=New+York+Public+Library,+4th+Ave+%26+42nd+St,+New+York" target="_blank" class="loc-link">New York Public Library</a></div>
+      <div class="tl-note">4th Ave &amp; 42nd St · 10-min walk · Free · <a href="https://maps.google.com/?q=Rose+Main+Reading+Room+New+York+Public+Library" target="_blank" class="loc-link">Rose Main Reading Room</a> is stunning</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-time">After</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-time">After</div>
       <div class="tl-line"><div class="tl-dot"></div></div>
-      <div class="tl-content">
-        <div class="tl-place">Nintendo New York</div>
-        <div class="tl-note">10 Rockefeller Plaza · If energy allows · Pokémon, Zelda, Mario · Play Mario Kart in-store</div>
-      </div>
+    <div class="tl-content">
+      <div class="tl-place"><a href="https://maps.google.com/?q=Nintendo+New+York,+9+Rockefeller+Plaza" target="_blank" class="loc-link">Nintendo New York</a></div>
+      <div class="tl-note">9 Rockefeller Plaza · If energy allows · Pokémon, Zelda, Mario · Play Mario Kart in-store</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Pizza spotlight Day 4 — Tuesday evening free -->
+  <div class="pizza-spotlight">
+    <div class="pizza-spotlight-heading">🍕 Boys' Pizza Mission</div>
+    <div class="pizza-spotlight-title">West Village Pizza Night — Tuesday Evening</div>
+    <p style="font-size:.83rem;color:#555;margin-bottom:.5rem;">Tuesday evening is wide open — the perfect time to head down to the West Village and let the boys try two of NYC's most iconic slices. Both are in the same neighborhood, easy walk between them.</p>
+    <div class="pizza-spots">
+      <a href="https://maps.google.com/?q=L%27Industrie+Pizzeria+West+Village+New+York" target="_blank" class="pizza-spot">
+        <div class="pizza-spot-name">L'Industrie Pizzeria</div>
+        <div class="pizza-spot-note">West Village · Beloved Neapolitan-style NY slice, consistently rated best in city · expect a short line but worth it</div>
+      </a>
+      <a href="https://maps.google.com/?q=Joe%27s+Pizza+West+Village+New+York" target="_blank" class="pizza-spot">
+        <div class="pizza-spot-name">Joe's Pizza</div>
+        <div class="pizza-spot-note">West Village · NYC institution since 1975 · the definitive NY fold-and-eat slice · cheap, perfect, legendary</div>
+      </a>
     </div>
   </div>
 
   <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
-  <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Kin Ramen</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">One of the best-rated ramen in the city · No reservations · Line moves fast</div>
-      </div>
+    <div class="restaurants-grid">
+      <a href="https://maps.google.com/?q=Kin+Ramen+Midtown+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo"
+          src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop"
+          alt="ramen noodles" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Midtown</div>
+          <div class="rest-name">Kin Ramen <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.8</div>
+          <div class="rest-desc">One of the best-rated ramen in the city · No reservations · Line moves fast</div>
+        </div>
+      </a>
+      <a href="https://maps.google.com/?q=Amor+Loco+Midtown+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo"
+          src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop"
+          alt="tacos" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Midtown</div>
+          <div class="rest-name">Amor Loco <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.7 · $$</div>
+          <div class="rest-desc">Lively Mexican · Great tacos and guac · Easy walk-in</div>
+        </div>
+      </a>
+      <a href="https://maps.google.com/?q=Yard+House+Midtown+New+York" target="_blank" class="rest-card">
+        <img class="rest-photo"
+          src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop"
+          alt="bar food" />
+        <div class="rest-body">
+          <div class="rest-neighborhood">Midtown</div>
+          <div class="rest-name">Yard House <span class="map-icon">📍</span></div>
+          <div class="rest-meta">⭐ 4.5 · $$</div>
+          <div class="rest-desc">Giant menu · Sports on TVs · Very easy walk-in · Near Rockefeller Center</div>
+        </div>
+      </a>
     </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="tacos" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Amor Loco</div>
-        <div class="rest-rating">⭐ 4.7 · $$</div>
-        <div class="rest-note">Lively Mexican · Great tacos and guac · Easy walk-in</div>
-      </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop" alt="bar food" loading="lazy">
-      <div class="rest-body">
-        <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Yard House</div>
-        <div class="rest-rating">⭐ 4.5 · $$</div>
-        <div class="rest-note">Giant menu · Sports on TVs · Very easy walk-in · Near Rockefeller Center</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ════════════════ DAY 5 ════════════════ -->
@@ -1057,68 +1308,99 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">Morning</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Harry Potter Shop New York</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Harry+Potter+Shop+New+York,+935+Broadway" target="_blank"
+            class="loc-link">Harry Potter Shop New York</a></div>
         <div class="tl-note">935 Broadway, near Chelsea · Allow 1–1.5 hours · Official NYC flagship store</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">1:00 PM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">American Museum of Natural History</div>
-        <div class="tl-note">200 Central Park W · Dinosaur halls + Hall of Ocean Life · Rose Center for Earth &amp; Space · Closes 5:30pm</div>
+        <div class="tl-place"><a
+            href="https://maps.google.com/?q=American+Museum+of+Natural+History,+200+Central+Park+W,+New+York"
+            target="_blank" class="loc-link">American Museum of Natural History</a></div>
+        <div class="tl-note">200 Central Park W · Dinosaur halls + <a
+            href="https://maps.google.com/?q=Hall+of+Ocean+Life+AMNH+New+York" target="_blank" class="loc-link">Hall of
+            Ocean Life</a> · <a href="https://maps.google.com/?q=Rose+Center+for+Earth+and+Space+New+York" target="_blank"
+            class="loc-link">Rose Center for Earth &amp; Space</a> · Closes 5:30pm</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:00 PM</div>
-      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Carnegie Hall</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Carnegie+Hall,+57th+St+%26+7th+Ave,+New+York"
+            target="_blank" class="loc-link">Carnegie Hall</a></div>
         <div class="tl-note">Arrive by 7:45pm · One of the world's most storied concert venues · 57th St &amp; 7th Ave</div>
       </div>
     </div>
   </div>
 
+  <div class="coffee-treat">
+    <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+    <div class="coffee-treat-title">Devoción — Chelsea/Flatiron (near hotel)</div>
+    <div class="coffee-treat-note">
+      Before Harry Potter swing by <a href="https://maps.google.com/?q=Devoción+coffee+New+York" target="_blank" class="coffee-spot-link">Devoción</a> — a stunning Colombian roaster with a plant-filled greenhouse interior and ultra-fresh beans flown weekly from Colombia. One of the most beautiful coffee spaces in the city. A perfect Harry Potter Treat. ☕
+    </div>
+  </div>
+
   <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
   <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="fried chicken" loading="lazy">
+    <a href="https://maps.google.com/?q=Jacob%27s+Pickles+Upper+West+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop"
+        alt="fried chicken" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper West Side</div>
-        <div class="rest-name">Jacob's Pickles</div>
-        <div class="rest-rating">⭐ 4.5 · $$</div>
-        <div class="rest-note">Southern fried chicken, biscuits, mac &amp; cheese · Huge portions · Walk-in only</div>
+        <div class="rest-name">Jacob's Pickles <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.5 · $$</div>
+        <div class="rest-desc">Southern fried chicken, biscuits, mac &amp; cheese · Huge portions · Walk-in only</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=75&auto=format&fit=crop" alt="comfort food" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Fred%27s+Upper+West+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=75&auto=format&fit=crop"
+        alt="comfort food" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper West Side</div>
-        <div class="rest-name">Fred's</div>
-        <div class="rest-rating">⭐ 4.4 · $$</div>
-        <div class="rest-note">Mac &amp; cheese, flatbreads, BBQ wings · Great for families · From noon</div>
+        <div class="rest-name">Fred's <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.4 · $$</div>
+        <div class="rest-desc">Mac &amp; cheese, flatbreads, BBQ wings · Great for families</div>
+        <div class="rest-hours">From noon</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Super+Nice+Pizza+Upper+West+Side+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" />
       <div class="rest-body">
         <div class="rest-neighborhood">Upper West Side</div>
-        <div class="rest-name">Super Nice Pizza</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Pizza gem with secret-menu burger · Dinner only on weekdays</div>
+        <div class="rest-name">Super Nice Pizza <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Pizza gem with secret-menu burger · Dinner only on weekdays</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Kin+Ramen+Midtown+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop"
+        alt="ramen noodles" />
       <div class="rest-body">
         <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Kin Ramen</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Great pre-Carnegie option · One of the best-rated ramen in the city</div>
+        <div class="rest-name">Kin Ramen <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Great pre-Carnegie option · One of the best-rated ramen in the city</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1156,23 +1438,36 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">9:30 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Brooklyn Bridge — Start Manhattan Side</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Brooklyn+Bridge+Manhattan+entrance+New+York"
+            target="_blank" class="loc-link">Brooklyn Bridge — Start Manhattan Side</a></div>
         <div class="tl-note">Walk toward Brooklyn · 30–40 min · Great skyline views from the pedestrian walkway</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">10:20 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">DUMBO</div>
-        <div class="tl-note">Exit bridge Brooklyn side · Wander the neighborhood · Classic bridge photo at Washington St under the archway</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=DUMBO+Brooklyn+New+York" target="_blank"
+            class="loc-link">DUMBO</a></div>
+        <div class="tl-note">Exit bridge Brooklyn side · Wander the neighborhood · Classic bridge photo at <a
+            href="https://maps.google.com/?q=Washington+St+DUMBO+Brooklyn+New+York" target="_blank"
+            class="loc-link">Washington St</a> under the archway</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">11:10 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
         <div class="tl-place">Rideshare to MyssTic</div>
         <div class="tl-note">2.3 miles south · ~10 min by car · Too far to walk</div>
@@ -1180,48 +1475,74 @@ body {
     </div>
     <div class="tl-item">
       <div class="tl-time">11:30 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">MyssTic Rooms — Escape Room</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=MyssTic+Rooms+Brooklyn+New+York" target="_blank"
+            class="loc-link">MyssTic Rooms — Escape Room</a></div>
         <div class="tl-note">Brooklyn escape room · Already booked · Highly rated immersive rooms</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">After</div>
-      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Lunch in DUMBO</div>
-        <div class="tl-note">Time Out Market Brooklyn is right there · Great food hall with many options</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+New+York" target="_blank"
+            class="loc-link">Lunch in DUMBO — Time Out Market Brooklyn</a></div>
+        <div class="tl-note">Right there · Great food hall with many options</div>
       </div>
     </div>
   </div>
+
+  <div class="coffee-treat">
+  <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+  <div class="coffee-treat-title">La Cabra — SoHo / NoLita</div>
+  <div class="coffee-treat-note">
+    Danish specialty coffee in the heart of SoHo! <a href="https://maps.google.com/?q=La+Cabra+284+Lafayette+St+New+York" target="_blank" class="coffee-spot-link">La Cabra</a> on Lafayette St is known for exceptional single-origin coffees and flaky, buttery pastries — especially the cardamom bun and pain suisse. A little indulgence to make the trip extra special. ☕
+  </div>
+</div>
 
   <div class="section-title"><span class="icon">🚇</span>Getting There</div>
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">8:45 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place"><a
+            href="https://maps.google.com/?q=Kimpton+Eventi+Hotel,+851+Avenue+of+the+Americas,+New+York" target="_blank"
+            class="loc-link">Kimpton Eventi Hotel</a></div>
+        <div class="tl-note">Depart hotel</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:50 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">28th St &amp; 7th Ave → 1 Train</div><div class="tl-note">Southbound · ~20 min</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=28th+St+%26+7th+Ave+subway+New+York" target="_blank"
+            class="loc-link">28th St &amp; 7th Ave → 1 Train</a></div>
+        <div class="tl-note">Southbound · ~20 min</div>
+      </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">~9:10 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">Chambers St Station</div><div class="tl-note">Exit subway · 10 min walk east to bridge entrance</div></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-time">10:20 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
-      <div class="tl-content"><div class="tl-place">DUMBO Arrival</div><div class="tl-note">Explore and get the Washington St photo</div></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-time">11:10 AM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div></div>
-      <div class="tl-content"><div class="tl-place">Rideshare to MyssTic</div><div class="tl-note">2.3 miles · ~10 min · Order ahead to arrive at MyssTic by 11:30</div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-place"><a href="https://maps.google.com/?q=Chambers+St+subway+station+New+York" target="_blank"
+            class="loc-link">Chambers St Station</a></div>
+        <div class="tl-note">Exit subway · 10 min walk east to bridge entrance</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1260,67 +1581,99 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">10:00 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Intrepid Sea, Air &amp; Space Museum</div>
-        <div class="tl-note">Pier 86, W 46th St · Aircraft carrier, fighter jets, walkable submarine, Space Shuttle · Closes 5pm</div>
+        <div class="tl-place"><a
+            href="https://maps.google.com/?q=Intrepid+Sea+Air+%26+Space+Museum,+Pier+86,+W+46th+St,+New+York"
+            target="_blank" class="loc-link">Intrepid Sea, Air &amp; Space Museum</a></div>
+        <div class="tl-note">Pier 86, W 46th St · Aircraft carrier, fighter jets, walkable submarine, Space Shuttle · Closes
+          5pm</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">Afternoon</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
         <div class="tl-place">Rest / Lunch</div>
-        <div class="tl-note">Chelsea Market or Grand Central food market nearby</div>
+        <div class="tl-note"><a href="https://maps.google.com/?q=Chelsea+Market,+75+9th+Ave,+New+York" target="_blank"
+            class="loc-link">Chelsea Market</a> or <a
+            href="https://maps.google.com/?q=Grand+Central+Terminal+food+market,+New+York" target="_blank"
+            class="loc-link">Grand Central food market</a> nearby</div>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-time">Evening</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-time">7:00 PM</div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">New World Stages — The Play That Goes Wrong</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=New+World+Stages,+340+W+50th+St,+New+York" target="_blank"
+            class="loc-link">New World Stages — The Play That Goes Wrong</a></div>
         <div class="tl-note">340 W 50th St · One of NYC's funniest shows running right now</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">After show</div>
-      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Times Square</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Times+Square,+New+York" target="_blank"
+            class="loc-link">Times Square</a></div>
         <div class="tl-note">5-min walk · See it fully lit up at night — the definitive NYC experience</div>
       </div>
     </div>
+
+    <div class="coffee-treat">
+  <div class="coffee-treat-heading">Coffee Treat for Mom</div>
+  <div class="coffee-treat-title">Porto Rico Importing Co. — Greenwich Village</div>
+  <div class="coffee-treat-note">
+    A true NYC institution! <a href="https://maps.google.com/?q=Porto+Rico+Importing+Co+201+Bleecker+St+New+York" target="_blank" class="coffee-spot-link">Porto Rico Importing Co.</a> on Bleecker St has been roasting coffee since 1907 — walk in to the incredible aroma of freshly roasted beans, grab a cup brewed fresh in the back, or pick up a bag to bring home as a souvenir. A one-of-a-kind NYC experience at ⭐ 4.7. ☕
   </div>
+</div>
 
   <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
   <div class="restaurants-grid">
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+    <a href="https://maps.google.com/?q=Kin+Ramen+Midtown+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop"
+        alt="ramen noodles" />
       <div class="rest-body">
         <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Kin Ramen</div>
-        <div class="rest-rating">⭐ 4.8</div>
-        <div class="rest-note">Best-rated ramen in the city · No reservations · Line moves fast</div>
+        <div class="rest-name">Kin Ramen <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.8</div>
+        <div class="rest-desc">Best-rated ramen in the city · No reservations · Line moves fast</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="tacos" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Amor+Loco+Midtown+New+York" target="_blank" class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="tacos" />
       <div class="rest-body">
         <div class="rest-neighborhood">Midtown</div>
-        <div class="rest-name">Amor Loco</div>
-        <div class="rest-rating">⭐ 4.7 · $$</div>
-        <div class="rest-note">Lively Mexican · Great tacos and guac · Easy walk-in</div>
+        <div class="rest-name">Amor Loco <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.7 · $$</div>
+        <div class="rest-desc">Lively Mexican · Great tacos and guac · Easy walk-in</div>
       </div>
-    </div>
-    <div class="rest-card">
-      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" loading="lazy">
+    </a>
+    <a href="https://maps.google.com/?q=Mom%27s+Kitchen+and+Bar+Hell%27s+Kitchen+New+York" target="_blank"
+      class="rest-card">
+      <img class="rest-photo"
+        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" />
       <div class="rest-body">
         <div class="rest-neighborhood">Hell's Kitchen</div>
-        <div class="rest-name">Mom's Kitchen and Bar</div>
-        <div class="rest-rating">⭐ 4.5 · $$</div>
-        <div class="rest-note">Retro American comfort food · Great for walk-ins with kids · Steps from New World Stages</div>
+        <div class="rest-name">Mom's Kitchen and Bar <span class="map-icon">📍</span></div>
+        <div class="rest-meta">⭐ 4.5 · $$</div>
+        <div class="rest-desc">Retro American comfort food · Great for walk-ins with kids · Steps from New World Stages
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1358,50 +1711,75 @@ body {
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-time">8:00 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Kimpton Eventi — Check Out</div>
+        <div class="tl-place"><a
+            href="https://maps.google.com/?q=Kimpton+Eventi+Hotel,+851+Avenue+of+the+Americas,+New+York" target="_blank"
+            class="loc-link">Kimpton Eventi — Check Out</a></div>
         <div class="tl-note">Hold bags with hotel for the morning</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">8:30 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Tompkins Square Bagels</div>
-        <div class="tl-note">61 E 17th St · Steps from the Greenmarket · Everything bagel w/ scallion cream cheese — the classic NYC send-off</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Tompkins+Square+Bagels,+61+E+7th+St,+New+York"
+            target="_blank" class="loc-link">Tompkins Square Bagels</a></div>
+        <div class="tl-note">438 E 9th St · Everything bagel w/ scallion cream cheese — the classic NYC send-off</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">9:00 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Union Square Saturday Greenmarket</div>
-        <div class="tl-note">Fresh produce, flowers, cheese, baked goods · One of NYC's best farmers markets — running since 1976</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Union+Square+Saturday+Greenmarket+New+York"
+            target="_blank" class="loc-link">Union Square Saturday Greenmarket</a></div>
+        <div class="tl-note">Fresh produce, flowers, cheese, baked goods · One of NYC's best farmers markets — running since
+          1976</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">10:00 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Strand Bookstore</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Strand+Bookstore,+828+Broadway,+New+York" target="_blank"
+            class="loc-link">Strand Bookstore</a></div>
         <div class="tl-note">828 Broadway · 18 miles of books · Perfect for finding a flight read or a NYC souvenir</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">11:00 AM</div>
-      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot"></div>
+        <div class="tl-connector"></div>
+      </div>
       <div class="tl-content">
-        <div class="tl-place">Barnes &amp; Noble Union Square</div>
+        <div class="tl-place"><a href="https://maps.google.com/?q=Barnes+%26+Noble+Union+Square,+33+E+17th+St,+New+York"
+            target="_blank" class="loc-link">Barnes &amp; Noble Union Square</a></div>
         <div class="tl-note">33 E 17th St · Browse and grab a coffee before heading out</div>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-time">2:00 PM</div>
-      <div class="tl-line"><div class="tl-dot travel"></div></div>
+      <div class="tl-line">
+        <div class="tl-dot travel"></div>
+      </div>
       <div class="tl-content">
         <div class="tl-place">Lyft to LaGuardia Airport</div>
-        <div class="tl-note">Flight at 5:15 PM · Pick up bags from hotel first · Allow 45–60 min to airport · Plenty of buffer</div>
+        <div class="tl-note">Flight at 5:15 PM · Pick up bags from hotel first · Allow 45–60 min to airport · Plenty of
+          buffer</div>
       </div>
     </div>
   </div>
