@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Travel Itinerary · Mar 28 – Apr 4</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Bebas+Neue&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --sand: #E8DFD0;
+  --warm-brown: #8B6E52;
+  --dark-brown: #2C1F14;
+  --accent: #C4894A;
+  --accent-light: #E8C49A;
+  --navy: #1A2535;
+  --text: #3A2E25;
+  --muted: #7A6A58;
+  --white: #FDFAF5;
+  --card-bg: #FDFAF5;
+  --shadow: rgba(44,31,20,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ─── COVER PAGE ─── */
+.cover {
+  background: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px;
+}
+.cover-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1400&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center 60%;
+  opacity: 0.5;
+}
+.cover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,37,53,0.4) 0%, rgba(26,37,53,0.85) 100%);
+}
+.cover-content { position: relative; z-index: 2; text-align: center; }
+.cover-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.cover-city {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 16vw, 140px);
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: 4px;
+}
+.cover-script {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--accent-light);
+  margin: 8px 0 24px;
+}
+.cover-dates {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(253,250,245,0.7);
+  font-weight: 400;
+}
+.cover-divider {
+  width: 60px; height: 1px;
+  background: var(--accent);
+  margin: 20px auto;
+}
+.cover-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(253,250,245,0.8);
+  max-width: 360px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cover-days {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+.cover-day-pill {
+  background: rgba(253,250,245,0.1);
+  border: 1px solid rgba(196,137,74,0.4);
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  font-weight: 400;
+}
+.cover-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(253,250,245,0.4);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.cover-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: rgba(196,137,74,0.5);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity:0.3; transform:scaleY(1); }
+  50% { opacity:1; transform:scaleY(1.3); }
+}
+
+/* ─── NAV ─── */
+.day-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 2px solid var(--accent);
+}
+.day-nav::-webkit-scrollbar { display: none; }
+.day-nav a {
+  color: rgba(253,250,245,0.6);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 14px 16px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.day-nav a:hover {
+  color: var(--accent-light);
+  border-bottom-color: var(--accent);
+}
+
+/* ─── DAY SECTION ─── */
+.day-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 70px 30px 80px;
+  border-bottom: 1px solid var(--sand);
+}
+
+/* ─── DAY HEADER ─── */
+.day-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+@media(max-width:640px){ .day-hero { grid-template-columns:1fr; } }
+.day-num-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 120px;
+  line-height: 0.85;
+  color: var(--sand);
+  letter-spacing: 2px;
+  user-select: none;
+}
+.day-heading-block { padding-top: 12px; }
+.day-script {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.day-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 3px;
+  color: var(--dark-brown);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.day-date {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.weather-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--sand);
+  border-radius: 40px;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: var(--text);
+}
+.weather-icon { font-size: 16px; }
+.weather-warn {
+  background: #FFF4E6;
+  border-color: var(--accent-light);
+  color: #7A4A10;
+  font-weight: 500;
+}
+.day-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 8px 8px 0 var(--sand);
+}
+.photo-caption {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-align: right;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ─── SECTION TITLE ─── */
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 18px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sand);
+}
+.section-title .icon { font-size: 14px; }
+
+/* ─── SCHEDULE / TIMELINE ─── */
+.timeline { padding-left: 0; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 72px 1px 1fr;
+  gap: 0 16px;
+  margin-bottom: 0;
+}
+.tl-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-align: right;
+  padding: 14px 0 14px;
+  white-space: nowrap;
+}
+.tl-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tl-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--cream);
+  outline: 1.5px solid var(--accent);
+  margin-top: 18px;
+  flex-shrink: 0;
+}
+.tl-dot.travel { background: var(--navy); outline-color: var(--navy); }
+.tl-connector {
+  flex: 1;
+  width: 1px;
+  background: var(--sand);
+}
+.tl-content {
+  padding: 12px 0 12px;
+  border-bottom: 1px solid rgba(232,223,208,0.5);
+}
+.tl-item:last-child .tl-content { border-bottom: none; }
+.tl-place {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-brown);
+  margin-bottom: 3px;
+}
+.tl-note {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─── RESTAURANTS ─── */
+.restaurants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.rest-card {
+  background: var(--card-bg);
+  border: 1px solid var(--sand);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.rest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+.rest-photo {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+.rest-photo-placeholder {
+  width: 100%;
+  height: 100px;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.rest-body { padding: 12px 14px 14px; }
+.rest-neighborhood {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.rest-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  color: var(--dark-brown);
+  margin-bottom: 3px;
+}
+.rest-rating {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.rest-note {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─── TIP BOX ─── */
+.tip-box {
+  background: var(--card-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.tip-text { font-size: 13px; color: var(--text); line-height: 1.5; }
+.tip-text strong { color: var(--accent); font-weight: 500; }
+
+/* ─── HIGHLIGHTS STRIP ─── */
+.highlights {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.highlight-tag {
+  background: var(--card-bg);
+  border: 1px solid var(--sand);
+  border-radius: 2px;
+  padding: 5px 12px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text);
+  font-weight: 400;
+}
+.highlight-tag span { color: var(--accent); margin-right: 4px; }
+
+/* ─── PHOTO GRID ─── */
+.photo-trio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 24px 0;
+}
+.photo-trio img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+/* ─── BACK COVER ─── */
+.back-cover {
+  background: var(--navy);
+  padding: 80px 40px;
+  text-align: center;
+}
+.back-title {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 42px;
+  color: var(--accent-light);
+  margin-bottom: 12px;
+}
+.back-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(253,250,245,0.4);
+}
+.back-hotel {
+  margin: 40px auto;
+  max-width: 360px;
+  background: rgba(253,250,245,0.06);
+  border: 1px solid rgba(196,137,74,0.3);
+  border-radius: 4px;
+  padding: 24px 28px;
+}
+.back-hotel-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.back-hotel-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.back-hotel-detail {
+  font-size: 12px;
+  color: rgba(253,250,245,0.5);
+  line-height: 1.8;
+}
+.back-essentials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+  gap: 16px;
+  max-width: 700px;
+  margin: 40px auto 0;
+}
+.essential-card {
+  background: rgba(253,250,245,0.06);
+  border: 1px solid rgba(196,137,74,0.2);
+  border-radius: 4px;
+  padding: 18px 16px;
+}
+.essential-icon { font-size: 20px; margin-bottom: 8px; }
+.essential-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.essential-val {
+  font-size: 13px;
+  color: rgba(253,250,245,0.8);
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ COVER ════════════════ -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Family Travel · Spring 2025</div>
+    <div class="cover-city">NEW YORK</div>
+    <div class="cover-script">the city that never sleeps</div>
+    <div class="cover-dates">March 28 — April 4 · 8 Days</div>
+    <div class="cover-divider"></div>
+    <div class="cover-tagline">Eight days of skylines, bagels, museums, and magic with the family</div>
+    <div class="cover-days">
+      <div class="cover-day-pill">Day 1 · Harbor</div>
+      <div class="cover-day-pill">Day 2 · High Line</div>
+      <div class="cover-day-pill">Day 3 · Central Park</div>
+      <div class="cover-day-pill">Day 4 · Midtown</div>
+      <div class="cover-day-pill">Day 5 · Museum</div>
+      <div class="cover-day-pill">Day 6 · Brooklyn</div>
+      <div class="cover-day-pill">Day 7 · Intrepid</div>
+      <div class="cover-day-pill">Day 8 · Departure</div>
+    </div>
+  </div>
+  <div class="cover-scroll">Scroll</div>
+</section>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav class="day-nav">
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+  <a href="#day3">Day 3</a>
+  <a href="#day4">Day 4</a>
+  <a href="#day5">Day 5</a>
+  <a href="#day6">Day 6</a>
+  <a href="#day7">Day 7</a>
+  <a href="#day8">Day 8</a>
+</nav>
+
+<!-- ════════════════ DAY 1 ════════════════ -->
+<section class="day-section" id="day1">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">01</div>
+      <div class="day-heading-block">
+        <div class="day-script">welcome to the city</div>
+        <div class="day-title">STATUE OF LIBERTY &amp; LOWER MANHATTAN</div>
+        <div class="day-date">Saturday, March 28</div>
+        <div class="weather-badge"><span class="weather-icon">⛅</span> High 43°F · Low 32°F · Sunshine &amp; clouds · NNW 12 mph · 1% rain</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=700&q=80&auto=format&fit=crop" alt="Statue of Liberty, New York Harbor" loading="lazy">
+      <div class="photo-caption">New York Harbor</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>⚓</span>Statue of Liberty</div>
+    <div class="highlight-tag"><span>🏛</span>Ellis Island</div>
+    <div class="highlight-tag"><span>🌆</span>One World Observatory</div>
+    <div class="highlight-tag"><span>🇺🇸</span>Federal Hall</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text"><strong>Pro tip:</strong> Check in by 8:30 AM sharp — the first ferry fills up fast and the harbor is most beautiful in morning light before crowds arrive.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:30 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Statue of Liberty</div>
+        <div class="tl-note">Security check-in at Statue City Cruises · Iconic 1886 copper statue gifted by France · Symbol of American freedom</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">After ferry</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Ellis Island</div>
+        <div class="tl-note">Included with ferry ticket · Historic immigrant processing station 1892–1954 · Powerful museum tracing 12 million arrivals</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Afternoon</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">One World Observatory</div>
+        <div class="tl-note">Tallest building in the Western Hemisphere at 1,776 ft · 102nd floor with 360° views of the city</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Afternoon</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Federal Hall National Memorial</div>
+        <div class="tl-note">26 Wall St · Where George Washington took his first presidential oath in 1789 · Free entry</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🚇</span>Getting There</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">7:30 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">7:35 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">28th St &amp; Broadway → R/W Train</div><div class="tl-note">Southbound toward Rector St · ~20 min ride</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:00 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Liberty Bagels Wall Street</div><div class="tl-note">Grab breakfast bagels before the ferry</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:20 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div></div>
+      <div class="tl-content"><div class="tl-place">Statue City Cruises Terminal</div><div class="tl-note">Walk to terminal · Check in by 8:30 AM</div></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop" alt="diner food" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Lower Manhattan</div>
+        <div class="rest-name">ZAZA</div>
+        <div class="rest-rating">⭐ 4.5 · $$</div>
+        <div class="rest-note">Classic diner, milkshakes, huge portions · 7am–3pm only</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="pancakes brunch" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Tribeca</div>
+        <div class="rest-name">Bubby's</div>
+        <div class="rest-rating">⭐ 4.4 · $$</div>
+        <div class="rest-note">Pancakes, mac &amp; cheese, comfort food all day · 8am–10pm</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Tribeca</div>
+        <div class="rest-name">Serafina Tribeca</div>
+        <div class="rest-rating">⭐ 4.4 · $$</div>
+        <div class="rest-note">Easy Italian pizza, relaxed and family-friendly · noon–10pm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 2 ════════════════ -->
+<section class="day-section" id="day2">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">02</div>
+      <div class="day-heading-block">
+        <div class="day-script">sky-high greenery</div>
+        <div class="day-title">CHURCH, HIGH LINE &amp; CHELSEA</div>
+        <div class="day-date">Sunday, March 29</div>
+        <div class="weather-badge"><span class="weather-icon">⛅</span> High 52°F · Low 44°F · Partly cloudy · SSW 11 mph · 2% rain</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1588383139420-741886231167?q=80&w=2066&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The High Line, Chelsea" loading="lazy">
+      <div class="photo-caption">The High Line, Chelsea</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>⛪</span>Redeemer Downtown</div>
+    <div class="highlight-tag"><span>🌿</span>The High Line</div>
+    <div class="highlight-tag"><span>🌮</span>Chelsea Market</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text"><strong>Sunday service fills up:</strong> Arrive at Redeemer Downtown a few minutes early — it's a beloved congregation and the 10am service draws a crowd. The High Line is a lovely 7-min walk south afterwards.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:45 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Redeemer Downtown</div>
+        <div class="tl-note">120 W 14th St · 10am classical service with children's ministry · Tim Keller's founding church</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:45 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">The High Line</div>
+        <div class="tl-note">7-min walk from church · Enter at Gansevoort St, walk north through Chelsea · Elevated railway turned urban park</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00 PM</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Chelsea Market</div>
+        <div class="tl-note">75 9th Ave · High Line passes directly above · Los Tacos No. 1 highly recommended inside</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🚇</span>Getting There</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:00 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:05 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">The Grey Dog – Flatiron</div><div class="tl-note">Breakfast · 55 W 26th St · 3 blocks from hotel · Allow ~1 hour</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:15 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Walk to Redeemer</div><div class="tl-note">~10 min south on 8th Ave</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:45 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div></div>
+      <div class="tl-content"><div class="tl-place">Arrive Redeemer Downtown</div><div class="tl-note">Arrive early — Sunday service fills up fast</div></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">West Village</div>
+        <div class="rest-name">7th Street Burger</div>
+        <div class="rest-rating">⭐ 4.7 · $</div>
+        <div class="rest-note">Counter smash burgers ~$7 · multiple reviewers call it NYC's best</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">West Village</div>
+        <div class="rest-name">John's of Bleecker St</div>
+        <div class="rest-rating">⭐ 4.6 · $$</div>
+        <div class="rest-note">Legendary coal-fired pizza since 1929 · Walk-in only · Whole pies</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Chelsea</div>
+        <div class="rest-name">Yasubee Ramen</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Outstanding ramen + gyoza + karaage wings · 11am–10pm</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop" alt="restaurant food" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Hudson Yards</div>
+        <div class="rest-name">Mercado Little Spain</div>
+        <div class="rest-rating">⭐ 4.4 · $$</div>
+        <div class="rest-note">José Andrés' Spanish food hall · No reservations · Everyone picks their own counter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 3 ════════════════ -->
+<section class="day-section" id="day3">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">03</div>
+      <div class="day-heading-block">
+        <div class="day-script">the green heart of the city</div>
+        <div class="day-title">CENTRAL PARK &amp; THE MET</div>
+        <div class="day-date">Monday, March 30</div>
+        <div class="weather-badge"><span class="weather-icon">🌤</span> High 67°F · Low 54°F · Partly cloudy AM, cloudy PM · WSW 9 mph · 19% rain</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=700&q=80&auto=format&fit=crop" alt="Central Park, Manhattan" loading="lazy">
+      <div class="photo-caption">Central Park, Manhattan</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>🌳</span>Central Park</div>
+    <div class="highlight-tag"><span>🌉</span>Gapstow Bridge</div>
+    <div class="highlight-tag"><span>⛲</span>Bethesda Terrace</div>
+    <div class="highlight-tag"><span>🏛</span>The Met Museum</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text"><strong>Central Park order:</strong> Enter near 59th St for the Pond, cross Gapstow Bridge for that iconic skyline shot, then walk north to Bethesda Terrace. The Angel of the Waters fountain is a must-see. Afterward, head up Fifth Ave to the Met.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Morning</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Central Park</div>
+        <div class="tl-note">843 acres of green space in the heart of Manhattan · Enter near 59th St for the Pond area</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Morning</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Gapstow Bridge</div>
+        <div class="tl-note">Iconic stone arch bridge over the Pond · Famous for its view of the midtown skyline framed by trees · Perfect photo spot</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Morning</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Bethesda Terrace</div>
+        <div class="tl-note">Grand arcade and fountain at the park's heart · Angel of the Waters statue · One of the most beautiful spots in all of NYC</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Afternoon</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">The Metropolitan Museum of Art</div>
+        <div class="tl-note">1000 Fifth Ave · One of the world's great art museums · Suggest Egyptian Wing, European paintings, and the rooftop garden</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper East Side</div>
+        <div class="rest-name">Kuu</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Outstanding ramen and sushi · Barely any wait · 11:30am–9:30pm</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper East Side</div>
+        <div class="rest-name">Meijin</div>
+        <div class="rest-rating">⭐ 4.7</div>
+        <div class="rest-note">Beloved ramen spot with paper cranes on the ceiling · Super cozy atmosphere</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&auto=format&fit=crop" alt="restaurant" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper East Side</div>
+        <div class="rest-name">Green Kitchen</div>
+        <div class="rest-rating">⭐ 4.4 · $$</div>
+        <div class="rest-note">All-day casual 8am–10pm · Reviewers rave about it for families</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper West Side</div>
+        <div class="rest-name">Super Nice Pizza</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Pizza gem with a secret-menu burger · Brunch Sat/Sun</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 4 ════════════════ -->
+<section class="day-section" id="day4">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">04</div>
+      <div class="day-heading-block">
+        <div class="day-script">architecture &amp; world diplomacy</div>
+        <div class="day-title">UN, CHRYSLER &amp; ROCKEFELLER</div>
+        <div class="day-date">Tuesday, March 31</div>
+        <div class="weather-badge"><span class="weather-icon">⛅</span> High 72°F · Low 58°F · Mostly cloudy · SSW 9 mph · Rain possible tonight</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1555109307-f7d9da25c244?w=700&q=80&auto=format&fit=crop" alt="Grand Central Terminal, Midtown" loading="lazy">
+      <div class="photo-caption">Grand Central Terminal, Midtown</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>🌐</span>United Nations HQ</div>
+    <div class="highlight-tag"><span>🏢</span>Chrysler Building</div>
+    <div class="highlight-tag"><span>🚂</span>Grand Central</div>
+    <div class="highlight-tag"><span>📚</span>NY Public Library</div>
+    <div class="highlight-tag"><span>🎮</span>Nintendo New York</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text"><strong>Art Deco walk:</strong> The Chrysler Building lobby is free and one of the most beautiful spaces in NYC. Grand Central's lower food market is perfect for a relaxed lunch — sit in the main hall and watch the bustle above.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:45 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">UN Visitor Entrance</div>
+        <div class="tl-note">Arrive at 801 1st Ave at 45th St · Have ID ready for security</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:45 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">United Nations Headquarters</div>
+        <div class="tl-note">Guided tour of the General Assembly and Security Council chambers</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Noon</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Chrysler Building</div>
+        <div class="tl-note">405 Lexington Ave · 5-min walk from UN · Free art deco lobby, publicly accessible</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:30 PM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Grand Central Terminal</div>
+        <div class="tl-note">Lower-level food market for lunch · Explore the magnificent main hall</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2:00 PM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">New York Public Library</div>
+        <div class="tl-note">5th Ave &amp; 42nd St · 10-min walk · Free · Rose Main Reading Room is stunning</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">After</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Nintendo New York</div>
+        <div class="tl-note">10 Rockefeller Plaza · If energy allows · Pokémon, Zelda, Mario · Play Mario Kart in-store</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Kin Ramen</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">One of the best-rated ramen in the city · No reservations · Line moves fast</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="tacos" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Amor Loco</div>
+        <div class="rest-rating">⭐ 4.7 · $$</div>
+        <div class="rest-note">Lively Mexican · Great tacos and guac · Easy walk-in</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=75&auto=format&fit=crop" alt="bar food" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Yard House</div>
+        <div class="rest-rating">⭐ 4.5 · $$</div>
+        <div class="rest-note">Giant menu · Sports on TVs · Very easy walk-in · Near Rockefeller Center</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 5 ════════════════ -->
+<section class="day-section" id="day5">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">05</div>
+      <div class="day-heading-block">
+        <div class="day-script">indoor magic</div>
+        <div class="day-title">HARRY POTTER, NATURAL HISTORY &amp; CARNEGIE HALL</div>
+        <div class="day-date">Wednesday, April 1</div>
+        <div class="weather-badge"><span class="weather-icon">🌤</span> High 79°F · Low 53°F · Considerable clouds · SW 10 mph · 24% rain daytime · Showers possible evening</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1773517350296-32910edea139?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Museum of Natural History" loading="lazy">
+      <div class="photo-caption">American Museum of Natural History</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>⚡</span>Harry Potter Shop</div>
+    <div class="highlight-tag"><span>🦕</span>Natural History Museum</div>
+    <div class="highlight-tag"><span>🎶</span>Carnegie Hall</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">🌡️</div>
+    <div class="tip-text"><strong>Warmest day of the trip at 79°F!</strong> Enjoy the outdoor walk to the Harry Potter shop in the morning. Showers may come in the evening — perfect timing since Carnegie Hall is indoors. Museum + Carnegie Hall make this a full and memorable day.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Morning</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Harry Potter Shop New York</div>
+        <div class="tl-note">935 Broadway, near Chelsea · Allow 1–1.5 hours · Official NYC flagship store</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">1:00 PM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">American Museum of Natural History</div>
+        <div class="tl-note">200 Central Park W · Dinosaur halls + Hall of Ocean Life · Rose Center for Earth &amp; Space · Closes 5:30pm</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:00 PM</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Carnegie Hall</div>
+        <div class="tl-note">Arrive by 7:45pm · One of the world's most storied concert venues · 57th St &amp; 7th Ave</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="fried chicken" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper West Side</div>
+        <div class="rest-name">Jacob's Pickles</div>
+        <div class="rest-rating">⭐ 4.5 · $$</div>
+        <div class="rest-note">Southern fried chicken, biscuits, mac &amp; cheese · Huge portions · Walk-in only</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=75&auto=format&fit=crop" alt="comfort food" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper West Side</div>
+        <div class="rest-name">Fred's</div>
+        <div class="rest-rating">⭐ 4.4 · $$</div>
+        <div class="rest-note">Mac &amp; cheese, flatbreads, BBQ wings · Great for families · From noon</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=75&auto=format&fit=crop" alt="pizza" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Upper West Side</div>
+        <div class="rest-name">Super Nice Pizza</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Pizza gem with secret-menu burger · Dinner only on weekdays</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Kin Ramen</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Great pre-Carnegie option · One of the best-rated ramen in the city</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 6 ════════════════ -->
+<section class="day-section" id="day6">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">06</div>
+      <div class="day-heading-block">
+        <div class="day-script">across the bridge</div>
+        <div class="day-title">BROOKLYN BRIDGE &amp; DUMBO</div>
+        <div class="day-date">Thursday, April 2</div>
+        <div class="weather-badge weather-warn"><span class="weather-icon">🌧</span> High 61°F · Low 49°F · Mostly cloudy · Rain showers evening · Bring rain gear for the bridge walk</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1467521335787-2f0fc0f0e9a0?q=80&w=1960&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Brooklyn Bridge, DUMBO" loading="lazy">
+      <div class="photo-caption">Brooklyn Bridge, DUMBO</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>🌉</span>Brooklyn Bridge Walk</div>
+    <div class="highlight-tag"><span>📸</span>DUMBO Washington St</div>
+    <div class="highlight-tag"><span>🔐</span>MyssTic Escape Rooms</div>
+    <div class="highlight-tag"><span>🥘</span>Time Out Market</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">📸</div>
+    <div class="tip-text"><strong>The money shot:</strong> When you exit the bridge on the Brooklyn side, walk to Washington St. Look back toward Manhattan — the bridge framed by the brick archway is one of the most photographed views in NYC. Wear rain gear and it's still stunning.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:30 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Brooklyn Bridge — Start Manhattan Side</div>
+        <div class="tl-note">Walk toward Brooklyn · 30–40 min · Great skyline views from the pedestrian walkway</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:20 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">DUMBO</div>
+        <div class="tl-note">Exit bridge Brooklyn side · Wander the neighborhood · Classic bridge photo at Washington St under the archway</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:10 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Rideshare to MyssTic</div>
+        <div class="tl-note">2.3 miles south · ~10 min by car · Too far to walk</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:30 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">MyssTic Rooms — Escape Room</div>
+        <div class="tl-note">Brooklyn escape room · Already booked · Highly rated immersive rooms</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">After</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Lunch in DUMBO</div>
+        <div class="tl-note">Time Out Market Brooklyn is right there · Great food hall with many options</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🚇</span>Getting There</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:45 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Kimpton Eventi Hotel</div><div class="tl-note">Depart hotel</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:50 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">28th St &amp; 7th Ave → 1 Train</div><div class="tl-note">Southbound · ~20 min</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">~9:10 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">Chambers St Station</div><div class="tl-note">Exit subway · 10 min walk east to bridge entrance</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:20 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div><div class="tl-connector"></div></div>
+      <div class="tl-content"><div class="tl-place">DUMBO Arrival</div><div class="tl-note">Explore and get the Washington St photo</div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:10 AM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div></div>
+      <div class="tl-content"><div class="tl-place">Rideshare to MyssTic</div><div class="tl-note">2.3 miles · ~10 min · Order ahead to arrive at MyssTic by 11:30</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 7 ════════════════ -->
+<section class="day-section" id="day7">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">07</div>
+      <div class="day-heading-block">
+        <div class="day-script">jets, submarines &amp; broadway</div>
+        <div class="day-title">INTREPID MUSEUM &amp; THE PLAY THAT GOES WRONG</div>
+        <div class="day-date">Friday, April 3</div>
+        <div class="weather-badge weather-warn"><span class="weather-icon">🌧</span> High 54°F · Low 46°F · Cloudy with rain showers · ENE 10 mph · 59% rain — Pack your umbrella</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=700&q=80&auto=format&fit=crop" alt="Intrepid Sea Air Space Museum" loading="lazy">
+      <div class="photo-caption">Midtown &amp; Hell's Kitchen</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>✈️</span>Intrepid Museum</div>
+    <div class="highlight-tag"><span>🚀</span>Space Shuttle</div>
+    <div class="highlight-tag"><span>🎭</span>New World Stages</div>
+    <div class="highlight-tag"><span>🌃</span>Times Square at Night</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">☂️</div>
+    <div class="tip-text"><strong>Rain likely today (59%):</strong> The Intrepid is partly outdoors — wear a rain jacket and the flight deck is still incredible in wet weather. The Play That Goes Wrong is indoors, and Times Square looks magical in the rain at night. Keep an umbrella handy all day.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">10:00 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Intrepid Sea, Air &amp; Space Museum</div>
+        <div class="tl-note">Pier 86, W 46th St · Aircraft carrier, fighter jets, walkable submarine, Space Shuttle · Closes 5pm</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Afternoon</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Rest / Lunch</div>
+        <div class="tl-note">Chelsea Market or Grand Central food market nearby</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Evening</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">New World Stages — The Play That Goes Wrong</div>
+        <div class="tl-note">340 W 50th St · One of NYC's funniest shows running right now</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">After show</div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Times Square</div>
+        <div class="tl-note">5-min walk · See it fully lit up at night — the definitive NYC experience</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">🍽</span>Suggested Restaurants</div>
+  <div class="restaurants-grid">
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=400&q=75&auto=format&fit=crop" alt="ramen noodles" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Kin Ramen</div>
+        <div class="rest-rating">⭐ 4.8</div>
+        <div class="rest-note">Best-rated ramen in the city · No reservations · Line moves fast</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&q=75&auto=format&fit=crop" alt="tacos" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Midtown</div>
+        <div class="rest-name">Amor Loco</div>
+        <div class="rest-rating">⭐ 4.7 · $$</div>
+        <div class="rest-note">Lively Mexican · Great tacos and guac · Easy walk-in</div>
+      </div>
+    </div>
+    <div class="rest-card">
+      <img class="rest-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=75&auto=format&fit=crop" alt="burger" loading="lazy">
+      <div class="rest-body">
+        <div class="rest-neighborhood">Hell's Kitchen</div>
+        <div class="rest-name">Mom's Kitchen and Bar</div>
+        <div class="rest-rating">⭐ 4.5 · $$</div>
+        <div class="rest-note">Retro American comfort food · Great for walk-ins with kids · Steps from New World Stages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ DAY 8 ════════════════ -->
+<section class="day-section" id="day8">
+  <div class="day-hero">
+    <div>
+      <div class="day-num-label">08</div>
+      <div class="day-heading-block">
+        <div class="day-script">until next time, new york</div>
+        <div class="day-title">UNION SQUARE, BOOKSTORES &amp; DEPARTURE</div>
+        <div class="day-date">Saturday, April 4</div>
+        <div class="weather-badge weather-warn"><span class="weather-icon">🌧</span> High 53°F · Low 49°F · Cloudy with showers · E 9 mph · 47–50% rain</div>
+      </div>
+    </div>
+    <div>
+      <img class="day-photo" src="https://images.unsplash.com/photo-1604200657090-ae45994b2451?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Union Square, Manhattan" loading="lazy">
+      <div class="photo-caption">Union Square &amp; Flatiron District</div>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight-tag"><span>🥯</span>Tompkins Square Bagels</div>
+    <div class="highlight-tag"><span>🥬</span>Union Square Greenmarket</div>
+    <div class="highlight-tag"><span>📖</span>Strand Bookstore</div>
+    <div class="highlight-tag"><span>✈️</span>LGA Flight 5:15 PM</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">🧳</div>
+    <div class="tip-text"><strong>Departure day — bring your umbrella:</strong> Rain likely today (50%), but the Greenmarket, Strand, and B&N are all close together and easy to duck in and out of. Check out at 8am, hold bags with the hotel. Leave for LGA by 2pm — allow extra time for rain-slowed traffic.</div>
+  </div>
+
+  <div class="section-title"><span class="icon">📍</span>Schedule</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">8:00 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Kimpton Eventi — Check Out</div>
+        <div class="tl-note">Hold bags with hotel for the morning</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">8:30 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Tompkins Square Bagels</div>
+        <div class="tl-note">61 E 17th St · Steps from the Greenmarket · Everything bagel w/ scallion cream cheese — the classic NYC send-off</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">9:00 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Union Square Saturday Greenmarket</div>
+        <div class="tl-note">Fresh produce, flowers, cheese, baked goods · One of NYC's best farmers markets — running since 1976</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Strand Bookstore</div>
+        <div class="tl-note">828 Broadway · 18 miles of books · Perfect for finding a flight read or a NYC souvenir</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11:00 AM</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Barnes &amp; Noble Union Square</div>
+        <div class="tl-note">33 E 17th St · Browse and grab a coffee before heading out</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">2:00 PM</div>
+      <div class="tl-line"><div class="tl-dot travel"></div></div>
+      <div class="tl-content">
+        <div class="tl-place">Lyft to LaGuardia Airport</div>
+        <div class="tl-note">Flight at 5:15 PM · Pick up bags from hotel first · Allow 45–60 min to airport · Plenty of buffer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ BACK COVER ════════════════ -->
+<div class="back-cover">
+  <div class="back-title">Safe travels, friends.</div>
+  <div class="back-subtitle">New York City · March 28 – April 4, 2025</div>
+
+  <div class="back-hotel">
+    <div class="back-hotel-label">Home Base</div>
+    <div class="back-hotel-name">Kimpton Eventi Hotel</div>
+    <div class="back-hotel-detail">
+      851 Avenue of the Americas · Chelsea, NYC<br>
+      Flatiron District · R/W/1 trains nearby<br>
+      Hold bags on departure day ✓
+    </div>
+  </div>
+
+  <div class="back-essentials">
+    <div class="essential-card">
+      <div class="essential-icon">🚇</div>
+      <div class="essential-label">Subway</div>
+      <div class="essential-val">28th St is your home station. R/W/1 lines. Get a MetroCard or use tap-to-pay.</div>
+    </div>
+    <div class="essential-card">
+      <div class="essential-icon">🌡</div>
+      <div class="essential-label">Weather</div>
+      <div class="essential-val">Pack layers. Days 1–4 are cool to warm (43–72°F). Days 5–8 bring rain — keep an umbrella handy from Wednesday onward. Day 5 (79°F) is the warmest.</div>
+    </div>
+    <div class="essential-card">
+      <div class="essential-icon">🍕</div>
+      <div class="essential-label">Food tip</div>
+      <div class="essential-val">Kin Ramen (4.8★) is your go-to fallback near Midtown any evening.</div>
+    </div>
+    <div class="essential-card">
+      <div class="essential-icon">✈️</div>
+      <div class="essential-label">Departure</div>
+      <div class="essential-val">LGA · Sat Apr 4 · 5:15 PM flight. Leave hotel by 2 PM.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
