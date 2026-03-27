@@ -125,6 +125,12 @@ body {
   background: rgba(196,137,74,0.2);
   border-color: rgba(196,137,74,0.7);
 }
+.cover-day-pill:focus,
+.cover-day-pill:active {
+  outline: none;
+  background: rgba(196,137,74,0.2);
+  border-color: rgba(196,137,74,0.7);
+}
 .cover-day-pill.today {
   background: var(--accent);
   border-color: var(--accent);
@@ -196,6 +202,10 @@ body {
 .day-nav a.active {
   color: var(--accent-light);
   border-bottom-color: var(--accent);
+}
+.day-nav a:focus,
+.day-nav a:active {
+  outline: none;
 }
 @media(max-width:600px){
   .day-nav {
