@@ -145,6 +145,11 @@ body {
   0%,100% { opacity:0.3; transform:scaleY(1); }
   50% { opacity:1; transform:scaleY(1.3); }
 }
+@media(max-width:480px){
+  .cover-days { margin-top: 24px; gap: 10px; }
+  .cover-day-pill { padding: 6px 14px; font-size: 11px; }
+  .tagline-family { display: none; }
+}
 
 /* ─── NAV ─── */
 .day-nav {
@@ -174,9 +179,25 @@ body {
   margin-bottom: -2px;
   transition: all 0.2s;
 }
-.day-nav a:hover {
+.day-nav a:hover,
+.day-nav a.active {
   color: var(--accent-light);
   border-bottom-color: var(--accent);
+}
+@media(max-width:600px){
+  .day-nav {
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 4px;
+  }
+  .day-nav a {
+    font-size: 10px;
+    letter-spacing: 0;
+    padding: 12px 0;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
 }
 
 /* ─── DAY SECTION ─── */
@@ -631,7 +652,7 @@ body {
     <div class="cover-script">the city that never sleeps</div>
     <div class="cover-dates">March 28 — April 4 · 8 Days</div>
     <div class="cover-divider"></div>
-    <div class="cover-tagline">Eight days of skylines, bagels, museums, and magic with the family</div>
+    <div class="cover-tagline">Eight days of skylines, bagels, museums, and magic<span class="tagline-family"> with the family</span></div>
     <div class="cover-days">
       <div class="cover-day-pill">Day 1 · Harbor</div>
       <div class="cover-day-pill">Day 2 · High Line</div>
@@ -1661,7 +1682,7 @@ body {
     </div>
 
     <div class="coffee-treat">
-  <div class="coffee-treat-heading">Brunch & Coffee Stop for Mom</div>
+  <div class="coffee-treat-heading">Breakfast & Coffee Stop for Mom</div>
   <div class="coffee-treat-title">Hi-Collar — East Village</div>
   <div class="coffee-treat-note">
     A uniquely NYC experience! <a href="https://maps.google.com/?q=Hi-Collar+231+E+9th+St+New+York" target="_blank" class="coffee-spot-link">Hi-Collar</a> is a Japanese kissaten-style café on a charming East Village block — known for exceptional pour-over coffee, siphon tea, and cozy Japanese breakfast dishes like omurice and honey toast. A relaxed, atmospheric spot to start the morning right at ⭐ 4.4. ☕
@@ -1855,4 +1876,30 @@ body {
 </div>
 
 </body>
-</html>
+</html><script>
+(function(){
+  const navLinks = document.querySelectorAll('.day-nav a');
+  const sections = document.querySelectorAll('.day-section');
+
+  const setActive = (id) => {
+    navLinks.forEach(a => {
+      const isActive = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('active', isActive);
+      if (isActive) {
+        a.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, {
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
