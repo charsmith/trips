@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,6 +117,18 @@ body {
   text-transform: uppercase;
   color: var(--accent-light);
   font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cover-day-pill:hover {
+  background: rgba(196,137,74,0.2);
+  border-color: rgba(196,137,74,0.7);
+}
+.cover-day-pill.today {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
 }
 .cover-scroll {
   position: absolute;
@@ -654,14 +667,14 @@ body {
     <div class="cover-divider"></div>
     <div class="cover-tagline">Eight days of skylines, bagels, museums, and magic<span class="tagline-family"> with the family</span></div>
     <div class="cover-days">
-      <div class="cover-day-pill">Day 1 · Harbor</div>
-      <div class="cover-day-pill">Day 2 · High Line</div>
-      <div class="cover-day-pill">Day 3 · Central Park</div>
-      <div class="cover-day-pill">Day 4 · Midtown</div>
-      <div class="cover-day-pill">Day 5 · Museum</div>
-      <div class="cover-day-pill">Day 6 · Brooklyn</div>
-      <div class="cover-day-pill">Day 7 · Broadway</div>
-      <div class="cover-day-pill">Day 8 · Departure</div>
+      <a href="#day1" class="cover-day-pill" data-date="2026-03-28">Day 1 · Harbor</a>
+      <a href="#day2" class="cover-day-pill" data-date="2026-03-29">Day 2 · High Line</a>
+      <a href="#day3" class="cover-day-pill" data-date="2026-03-30">Day 3 · Central Park</a>
+      <a href="#day4" class="cover-day-pill" data-date="2026-03-31">Day 4 · Midtown</a>
+      <a href="#day5" class="cover-day-pill" data-date="2026-04-01">Day 5 · Museum</a>
+      <a href="#day6" class="cover-day-pill" data-date="2026-04-02">Day 6 · Brooklyn</a>
+      <a href="#day7" class="cover-day-pill" data-date="2026-04-03">Day 7 · Broadway</a>
+      <a href="#day8" class="cover-day-pill" data-date="2026-04-04">Day 8 · Departure</a>
     </div>
   </div>
   <div class="cover-scroll">Scroll</div>
@@ -1878,6 +1891,13 @@ body {
 </body>
 </html><script>
 (function(){
+  // Highlight today's pill
+  const today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('.cover-day-pill[data-date]').forEach(pill => {
+    if (pill.dataset.date === today) pill.classList.add('today');
+  });
+
+  // Active nav on scroll
   const navLinks = document.querySelectorAll('.day-nav a');
   const sections = document.querySelectorAll('.day-section');
 
